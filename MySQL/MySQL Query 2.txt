@@ -1,0 +1,32 @@
+Nomor 1
+CREATE TABLE MsSoundTrack(
+	SoundtrackID CHAR(5) PRIMARY KEY,
+	DramaID CHAR(5),
+	FOREIGN KEY (DramaID) REFERENCES msdrama(DramaID),
+	SoundtrackName VARCHAR(255) NOT NULL,
+	ArtistName VARCHAR(50) NOT NULL
+)
+
+Nomor 2
+INSERT mssoundtrack(SoundtrackID, DramaID, SoundtrackName, ArtistName)
+VALUES ("SO001", "DR010", "Shine on You with Blinding Flash of Light", "Bae Gi Seong")
+
+Nomor 3
+SELECT DramaID, DramaName, NetworkName
+FROM msdrama
+JOIN msnetwork ON msdrama.NetworkID = msnetwork.NetworkID
+WHERE NetworkName IN ("SBS", "MBC")
+
+Nomor 4
+SELECT TransactionID, TransactionDate, CustomerName, StaffName
+FROM transactionheader
+LEFT JOIN msstaff ON transactionheader.StaffID = msstaff.StaffID
+LEFT JOIN mscustomer ON transactionheader.CustomerID = mscustomer.CustomerID
+WHERE CustomerName LIKE "J%" AND StaffEmail LIKE "%@mail.com"
+
+Nomor 5
+UPDATE msdrama
+SET DramaPrice = DramaPrice - 50000
+WHERE DramaID IN (SELECT DramaID FROM msdrama JOIN msnetwork 
+ON msnetwork.NetworkID = msdrama.NetworkID WHERE LENGTH(NetworkName) = 4)
+

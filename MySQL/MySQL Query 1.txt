@@ -1,0 +1,31 @@
+Nomor 1
+CREATE TABLE CardType (
+    CardTypeID CHAR(5) PRIMARY KEY CHECK (CardTypeID REGEXP "CT[0-9][0-9][0-9]"),
+    CardTypeName VARCHAR(25) NOT NULL,
+    CardTypeBorder VARCHAR(25) NOT NULL,
+    CardTypePrismatic VARCHAR(5) NOT NULL CHECK (CardTypePrismatic REGEXP 	"False|True")
+)
+
+Nomor 2
+INSERT cardtype (CardTypeID, CardTypeName, CardTypeBorder, CardTypePrismatic)
+VALUES ("CT002", "Spell", "Grey", "True")
+
+Nomor 3
+SELECT CustomerName, TransactionID, TransactionDate
+FROM transactionheader
+LEFT JOIN mscustomer ON mscustomer.CustomerID = transactionheader.CustomerID
+WHERE MONTH(transactionheader.TransactionDate) = 7
+
+Nomor 4
+SELECT TransactionID, CardName, Quantity
+FROM transactiondetail
+JOIN card ON card.CardID = transactiondetail.CardID
+WHERE RIGHT(TransactionID, 3) % 2 = 0 AND Quantity BETWEEN 5 AND 10
+
+Nomor 5
+UPDATE card
+SET Power = Power + 1
+WHERE CardID IN (SELECT CardID FROM card JOIN region 
+ON region.RegionID = card.RegionID WHERE RegionName LIKE 'Targon')
+
+
