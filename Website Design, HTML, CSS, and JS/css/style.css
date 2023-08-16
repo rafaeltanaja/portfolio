@@ -1,0 +1,1333 @@
+*{
+    /* outline: 1px solid red; */
+    margin: 0px;
+    padding: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #000000;
+}
+
+@font-face{
+    font-family: krossneuebold;
+    src: url(../assets/font/KrossNeueGrotesk-Bold.woff2);
+}
+
+@font-face{
+    font-family: krossneuebook;
+    src: url(../assets/font/KrossNeueGrotesk-Book.woff2);
+}
+
+@font-face{
+    font-family: krossneuereg;
+    src: url(../assets/font/KrossNeueGrotesk-Regular.woff2);
+}
+
+@font-face{
+    font-family: krossneuelight;
+    src: url(../assets/font/KrossNeueGrotesk-Light.woff2);
+}
+
+/* Home */
+
+.navbar{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    color: #E4E3D9;
+    padding: 30px 10%;
+}
+
+.logo{
+    font-family: krossneuebook;
+    color: #E4E3D9;
+    margin-right: auto;
+    font-weight: 400;
+    font-size: 48px;
+    padding: 0px 45px;
+    margin-left: -145px;
+    cursor: pointer;
+}
+
+.navbar a{
+    display: inline-block;
+    padding: 0px 32px;
+    font-family: krossneuelight;
+    color: #E4E3D9;
+    cursor: pointer;
+}
+
+.hamburger{
+    display: block;
+    width: 35px;
+    cursor: pointer;
+
+    appearance: none;
+    background: none;
+    border: none;
+}
+
+.hamburger .bar, .hamburger:after, .hamburger:before{
+    content: '';
+    display: block;
+    width: 100%;
+    height: 5px;
+    background-color: #E4E3D9;
+    margin: 6px 0px;
+    transition: 0.4s;
+}
+
+.hamburger.on:before{
+    transform:rotate(-45deg) translate(-8px, 8px);
+}
+
+.hamburger.on .bar{
+    opacity: 0;
+}
+
+.hamburger.on:after{
+    transform:rotate(45deg) translate(-7px, -7px);
+}
+
+.burgernav{
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 100%;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 98;
+    background-color: #000000;
+    margin-top: 120px;
+    transition: 0.4s;
+}
+
+.burgernav a{
+    display: block;
+    text-align: center;
+    width: 100%;
+    max-width: 150px;
+    margin: 0 auto 16px;
+    padding: 12px 16px;
+    color: #E4E3D9;
+    background-color: #000000;
+    font-family: krossneuelight;
+    cursor: pointer;
+    letter-spacing: 2px;
+    position:relative;
+    overflow:hidden;
+}
+
+.burgernav a:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    background : #fff;
+    left: 45%;
+    height: 2px;
+    bottom: 0;
+    transition: all .3s;
+    opacity: 0.7;
+}
+  
+.burgernav a:hover:before {
+    width: 100%;
+    left: 0;
+}
+
+.burgernav.on{
+    left: 0;
+}
+
+.section1{
+    position: relative;
+    color: #E4E3D9;
+    font-family: krossneuebold;
+}
+  
+.bgimage-s1{
+    background-image: url(/assets/homebg.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 806px;
+}
+  
+.text-s1{
+    position: absolute;
+    top: 37%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-size: 64px;
+}
+
+.section2{
+    background-color: #E4E3D9;
+    display: flex;
+    justify-content: space-between;
+    padding: 0;
+    width: 100%;
+    margin: 1rem auto 0 auto;
+}
+
+.videocontainer{
+    width: 115%;
+    height: 471px;
+  
+    position: relative;
+    overflow: hidden;
+}
+
+.videocontainer video{
+    width: 100%;
+    height: 471px;
+  
+    position: absolute;
+    top: 0;
+    left: 0;
+  
+    object-fit: fill;
+}
+
+.text-s2{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background-color: #E4E3D9;
+}
+
+.upper-text-s2{
+    background-color: #E4E3D9;
+    margin: 20px;
+    font-family: krossneuebold;
+    font-weight: 700;
+    line-height: 77px;
+    font-size: 32px;
+}
+
+.below-text-s2{
+    background-color: #E4E3D9;
+    text-align: center;
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.section2 h1{
+    color: #1E1E1E;
+    font-family: krossneuebold;
+    justify-self: start;
+    text-align: left;
+    margin: 0;
+    background-color: #E4E3D9;
+}
+
+.section2 p{
+    color: #1E1E1E;
+    background-color: #E4E3D9;
+    text-align: left;
+    padding: 4.5%;
+}
+
+.orange{
+    background-color: #E4E3D9;
+    color: #C1440E;
+}
+
+.section3{
+    color: #E4E3D9;
+    width: 100%;
+    text-align: center;
+    display: inline;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between; 
+}
+
+.section3 h2{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    margin-top: 93px;
+    margin-bottom: 103px;
+}
+
+.statistics-s3{
+    justify-content: center;
+
+}
+
+.launches-s3{
+    display: inline-block;
+    text-align: center;
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.landings-s3{
+    display: inline-block;
+    text-align: center;
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.reflights-s3{
+    display: inline-block;
+    text-align: center;
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.circle{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 139px;
+    height: 139px;
+    border-radius: 50%;
+    background-color: #E4E3D9;
+    color: #000000;
+    margin-top: 20px;
+    margin-right: 135px;
+    margin-left: 135px;
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 77px;
+}
+
+.section4{
+    position: relative;
+    color: #E4E3D9;
+    font-family: krossneuebold;
+    margin-top: 26px;
+    width: 100%;
+    height: 624px;
+}
+
+.bgimage-s4{
+    background-image: url(/assets/astronaut.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 624px;
+}
+  
+.text-s4{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    background-color: transparent;
+}
+
+.regist-button{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    color: #E4E3D9;
+    padding: 0.20em 0.75em;
+    margin: 0.25em;
+    border-radius: 1em;
+    background: #0071E3;
+    cursor: pointer;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.regist-button:hover{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    color: #000000;
+    padding: 0.20em 0.75em;
+    margin: 0.25em;
+    border-radius: 1em;
+    background: #E4E3D9;
+    border: 3px solid blue;
+}
+
+.footer{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #E4E3D9;
+    background: #D9D9D9;
+    color: #000000;
+    width: 100%;
+    height: 65px;
+}
+
+.slogan{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    background: #D9D9D9;
+    text-align: center;
+    margin-left: 45%;
+    margin-right: auto;
+}
+
+.trademark{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    background: #D9D9D9;
+    margin-right: 88px;
+    text-align: right;
+}
+
+/* Launches */
+
+.launches-title{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: #E4E3D9;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.launches-name{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+}
+
+.launches-date{
+    font-family: krossneuebook;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 48px;
+    text-decoration-line: underline;
+}
+
+.launches1{
+    display: flex;
+    align-items: center;
+    margin-top: 128px;
+}
+
+.launches1-text{
+    flex: 1;
+    margin-right: 20px;
+    color: #E4E3D9;
+    background-color: #000000;
+    margin-left: 135px;
+}
+
+.launches1-img{
+    flex: 1;
+    text-align: right;
+    margin-right: 90px;
+    margin-left: 35px;
+}
+
+.launches1-img img{
+    width: 770px;
+    height: 475px;
+}
+
+.launches2{
+    display: flex;
+    align-items: center;
+    margin-top: 144px;
+}
+
+.launches2-text{
+    flex: 1;
+    text-align: right;
+    margin-right: 20px;
+    color: #E4E3D9;
+    background-color: #000000;
+    margin-right: 153px;
+}
+
+.launches2-img{
+    flex: 1;
+    text-align: left;
+    margin-right: 55px;
+    margin-left: 100px;
+}
+
+.launches2-img img{
+    width: 770px;
+    height: 475px;
+}
+
+.launches3{
+    display: flex;
+    align-items: center;
+    margin-bottom: 269px;
+    margin-top: 144px;
+}
+
+.launches3-text{
+    flex: 1;
+    margin-right: 20px;
+    color: #E4E3D9;
+    background-color: #000000;
+    margin-left: 135px;
+}
+
+.launches3-img{
+    flex: 1;
+    text-align: right;
+    margin-right: 90px;
+    margin-left: 35px;
+}
+
+.launches3-img img{
+    width: 770px;
+    height: 475px;
+}
+
+/* Programs */
+
+.programs-title{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: #E4E3D9;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.programs1{
+    position: relative;
+    justify-content: center;
+    flex: 1;
+    margin: 130px 90px 0px 90px;
+    overflow:hidden;
+}
+
+.programs1 .image-1{
+    background-image: url(/assets/program1.webp);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 496px;
+}
+
+.p1-content{
+    display: inline-block;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    left: 55%;
+}
+
+.programs-text{
+    flex: 1;
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #E4E3D9;
+    background-color: transparent;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.programs-text-below{
+    flex: 1;
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    color: #E4E3D9;
+    background-color: transparent;
+    word-wrap: break-word;
+    width: 500px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.register-programs-button{
+    font-family: krossneuereg;
+    color: #E4E3D9;
+    padding: 0.25em 1.75em;
+    border-radius: 1em;
+    background: #0071E3;
+    cursor: pointer;
+    text-align: center;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.register-programs-button:hover{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    padding: 0.25em 1.75em;
+    border-radius: 1em;
+    background: #E4E3D9;
+    border: 3px solid blue;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.programs2{
+    position: relative;
+    flex: 1;
+    margin: 123px 90px 0px 90px;
+}
+
+.programs2 .image-2{
+    background-image: url(/assets/program2.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 496px;
+}
+
+.p2-content{
+    display: inline-block;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background: transparent;
+    position: absolute;
+    top: 50%;
+    left: 10%;
+}
+
+.programs3{
+    position: relative;
+    flex: 1;
+    margin: 123px 90px 245px 90px;
+}
+
+.programs3 .image-3{
+    background-image: url(/assets/program3.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 496px;
+}
+
+.p3-content{
+    display: inline-block;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    align-items: flex-end;
+    background: transparent;
+    position: absolute;
+    top: 20%;
+    left: 55%;
+}
+
+/* Register */
+
+.register-container{
+    display: flex;
+    color: #000000;
+    background-color: #E4E3D9;
+    margin: 34px 85px 167px 85px;
+    border-radius: 5px;
+}
+
+label, input, .register-container p, button, .register-text, .register-start{
+    background-color: #E4E3D9;
+    border-radius: 5px;
+}
+
+.register-text{
+    flex: 1;
+    font-family: krossneuebook;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.register-start h1{
+    color: #000000;
+    background-color: #E4E3D9;
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    margin: 37px 43px 0px 39px;
+}
+
+.register-start h2{
+    color: #000000;
+    background-color: #E4E3D9;
+    font-family: krossneuebook;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0px 229px 0px 42px;
+}
+
+.register-input{
+    display: flex;
+    flex-direction: column;
+    margin: 52px 149px 2px 42px;
+    background-color: #E4E3D9;
+}
+  
+.register-input label{
+    margin-bottom: 5px;
+    font-family: krossneuebook;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+  
+.register-input input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.register-gender{
+    display: flex;
+    flex-direction: column;
+    margin: 0px 149px 2px 42px;
+    background-color: #E4E3D9;
+}
+
+.register-gender-radio{
+    display: inline;
+    background-color: #E4E3D9;
+    margin-top: 12px;
+}
+
+.register-gender-radio label{
+    margin-left: 10px;
+}
+
+.female{
+    margin-left: 31px;
+}
+
+.register-tos{
+    display: inline-flex;
+    background-color: #E4E3D9;
+    margin: 44px 149px 2px 42px;
+}
+
+.register-tos p{
+    margin-left: 17px;
+}
+
+.register-finishing{
+    display: flex;
+    flex-direction: column;
+    background-color: #E4E3D9;
+    margin: 62px 154px 84px 140px;
+}
+
+.register-button, .login-button, .register-login-button{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43px;
+    color: #E4E3D9;
+    padding: 0.20em 0.75em;
+    margin: 0.25em;
+    border-radius: 1em;
+    background: #0071E3;
+    cursor: pointer;
+}
+
+.register-button:hover, .login-button:hover, .register-login-button:hover{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 43px;
+    color: #000000;
+    padding: 0.20em 0.75em;
+    margin: 0.25em;
+    border-radius: 1em;
+    background: #E4E3D9;
+    border: 3px solid blue;
+}
+
+.register-finishing p{
+    margin-top: 31px;
+    margin-bottom: 31px;
+    text-align: center;
+}
+
+.register-image{
+    flex: 1;
+    background-image: url(/assets/astronautregister.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 675px;
+    height: 1082.08px;
+    border-radius: 5px;
+}
+
+.register-image p{
+    margin: 757px 20px 134px 182px;
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    text-align: right;
+    background: transparent;
+    color: #E4E3D9;
+}
+
+.country-select-container, .country-select, option{
+    background-color: #E4E3D9;
+}
+
+.country-select{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.popup{
+    display: none;
+    width: 760px;
+    height: 282px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+}
+
+.bgimage-popup{
+    background-image: url(/assets/registeredbg.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 760px;
+    height: 282px;
+}
+
+.text-popup{
+    display: flex;
+    background: transparent;
+    justify-content: center;
+}
+
+.text-popup p{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    color: #E4E3D9;
+    position: absolute;
+    top: 40%;
+}
+
+/* Login */
+
+.login-container{
+    display: flex;
+    color: #000000;
+    background-color: #E4E3D9;
+    margin: 34px 159px 90px 102px;
+    border-radius: 5px;
+}
+
+.login-text{
+    flex: 1;
+    font-family: krossneuebook;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.login-image{
+    flex: 1;
+    background-image: url(/assets/astronautface.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 547px;
+    height: 656px;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.login-image p{
+    margin: 489px 46px 53px 46px;
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 40px;
+    line-height: 48px;
+    text-align: center;
+    color: #070707;
+    text-shadow: 0px 4px 4px #E4E3D9;
+    /* filter: blur(1px); */
+    text-align: center;
+    background: transparent;
+}
+
+.login-start h1{
+    color: #000000;
+    background-color: #E4E3D9;
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 48px;
+    line-height: 58px;
+    margin: 37px 43px 0px 39px;
+}
+
+.login-start h2{
+    color: #000000;
+    background-color: #E4E3D9;
+    font-family: krossneuebook;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    margin: 0px 229px 0px 42px;
+}
+
+.login-input{
+    display: flex;
+    flex-direction: column;
+    margin: 52px 81px 2px 42px;
+    background-color: #E4E3D9;
+}
+  
+.login-input label{
+    margin-bottom: 5px;
+    font-family: krossneuebook;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+}
+  
+.login-input input{
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-finishing{
+    display: flex;
+    flex-direction: column;
+    background-color: #E4E3D9;
+    margin: 103px 187px 137px 144px;
+}
+
+.loginpopup{
+    display: none;
+    width: 760px;
+    height: 282px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    position: fixed;
+}
+
+.login-bgimage-popup{
+    background-image: url(/assets/registeredbg.jpg);
+    background-size: cover;
+    background-position: center;
+    width: 760px;
+    height: 282px;
+}
+
+/* Vehicles */
+
+.vehicle-title{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    color: #E4E3D9;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.vehicle1-container{
+    margin: 130px 90px 227px 90px;
+    display: flex;
+}
+
+.vehicle1-text, .vehicle2-text{
+    color: #E4E3D9;
+}
+
+.vehicle1-text h1{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+}
+
+.vehicle1-text h2{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.vehicle1-text p{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.vehiclesdetails{
+    font-family: krossneuereg;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.underline{
+    text-decoration: underline;
+    background: transparent;
+    color: #E4E3D9;
+}
+
+.height{
+    margin: 47px 0px 15px 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #E4E3D9;
+    height: 85px;
+    border-radius: 2px;
+    color: #000000;
+}
+
+.text-leftside{
+    margin-right: auto;
+    margin-left: 27px;
+}
+
+.text-rightside{
+    margin-right: 23px;
+}
+
+.diameter, .weight, .payload{
+    margin: 0px 0px 15px 0px;
+    background-color: #E4E3D9;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 85px;
+    color: #000000;
+}
+
+.payload{
+    margin-bottom: 0px;
+}
+
+.vehiclesdetails{
+    margin: 47px 160px 0px 0px;
+    color: #E4E3D9;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.vehicle1-image{
+    border-radius: 15px;
+    overflow: hidden;
+    margin-left: 89px;
+}
+
+.vehicle1-image img{
+    width: 563px;
+    height: 804px;
+}
+
+.vehicle2-container{
+    margin: 0px 90px 146px 90px;
+    display: flex;
+}
+
+.vehicle2-image{
+    border-radius: 15px;
+    margin-right: 74px;
+}
+
+.vehicle2-image img{
+    width: 563px;
+    height: 804px;
+}
+
+.vehicle2-text h1{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 64px;
+    line-height: 77px;
+    text-align: right;
+}
+
+.vehicle2-text h2{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    text-align: right;
+}
+
+.vehicle2-text p{
+    font-family: krossneuebold;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+.vehiclesdetails2{
+    margin: 54px 0px 0px 0px;
+    color: #E4E3D9;
+    font-weight: 400;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.height2{
+    margin: 47px 0px 15px 0px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: #E4E3D9;
+    height: 85px;
+    border-radius: 2px;
+    color: #000000;
+}
+
+.diameter2, .weight2, .payload2{
+    margin: 0px 0px 15px 0px;
+    background-color: #E4E3D9;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 85px;
+    color: #000000;
+}
+
+.payload2{
+    margin-bottom: 0px;
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    /* Home */
+
+    .nav-menu{
+        display: none;
+    }
+
+    .logo{
+        font-size: 32px;
+        margin-left: -70px;
+    }
+
+    .text-s1{
+        font-size: 48px;
+    }
+
+    .section2{
+        display: inline-block;
+    }
+
+    .upper-text-s2, .below-text-s2{
+        font-size: 28px;
+    }
+
+    .section3 h2{
+        font-size: 36px;
+    }
+
+    .launches-s3{
+        font-size: 30px;
+    }
+
+    .landings-s3, .reflights-s3{
+        font-size: 30px;
+        margin-top: 30px;
+    }
+
+    .text-s4, .regist-button, .regist-button:hover{
+        font-size: 24px;
+    }
+
+    .slogan{
+        display: none;
+    }
+
+    .footer{
+        align-items: center;
+        justify-content: center;
+    }
+
+    .trademark{
+        justify-content: center;
+        font-size: 14px;
+    }
+
+    /* Launches */
+
+    .launches-title{
+        font-size: 48px;
+    }
+
+    .launches-name, .launches-date{
+        font-size: 36px;
+    }
+
+    .launches1, .launches2, .launches3{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .launches1-text, .launches2-text, .launches3-text{
+        flex: none;
+        align-items: center;
+        text-align: center;
+    }
+
+    .launches1-img{
+        text-align: center;
+        align-items: center;
+    }
+
+    .launches1-img img, .launches2-img img, .launches3-img img{
+        max-width: 570px;
+    }
+
+    /* Programs */
+
+    .programs-title{
+        font-size: 48px;
+    }
+
+    .programs-text{
+        font-size: 24px;
+    }
+
+    .register-programs-button, .register-programs-button:hover{
+        font-size: 16px;
+    }
+
+    .p1-content{
+        top: 10%;
+        left: 50%;
+    }
+
+    .p3-content{
+        top: 30%;
+        left: 20%;
+    }
+
+    .programs-text-below{
+        font-size: 24px;
+        width: 250px;
+    }
+
+    .programs2{
+        margin-top: 100px;
+    }
+
+    .programs3{
+        margin-top: 100px;
+        margin-bottom: 100px;
+    }
+
+    /* Register*/
+
+    .register-image{
+        display: none;
+    }
+
+    .register-finishing{
+        text-align: center;
+    }
+
+    .popup, .bgimage-popup{
+        width: 500px;
+    }
+
+    .text-popup p{
+        font-size: 32px;
+    }
+
+    .register-button, .register-button:hover, .register-login-button, .register-login-button:hover{
+        font-size: 24px;
+    }
+
+    /* Login */
+
+    .login-container{
+        overflow: hidden;
+    }
+    .login-image{
+        display: none;
+    }
+
+    .login-input{
+        justify-content: center;
+    }
+
+    .loginpopup, .login-bgimage-popup{
+        width: 500px;
+    }
+
+    .login-button, .login-button:hover{
+        font-size: 24px;
+    }
+
+    /* Vehicles */
+    .vehicle1-image, .vehicle2-image{
+        display: none;
+    }
+
+}
+
+@media only screen and (min-width: 768px) {
+    .burgernav{
+        display: none;
+    }
+
+    .hamburger{
+        display: none;
+    }
+}

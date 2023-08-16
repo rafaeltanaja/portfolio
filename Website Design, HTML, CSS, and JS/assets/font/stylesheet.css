@@ -1,0 +1,156 @@
+@font-face {
+    font-family: 'Kross Neue Grotesk Book';
+    src: url('KrossNeueGrotesk-BookItalic.eot');
+    src: local('Kross Neue Grotesk Book Italic'), local('KrossNeueGrotesk-BookItalic'),
+        url('KrossNeueGrotesk-BookItalic.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-BookItalic.woff2') format('woff2'),
+        url('KrossNeueGrotesk-BookItalic.woff') format('woff'),
+        url('KrossNeueGrotesk-BookItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-Italic.eot');
+    src: local('Kross Neue Grotesk Italic'), local('KrossNeueGrotesk-Italic'),
+        url('KrossNeueGrotesk-Italic.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-Italic.woff2') format('woff2'),
+        url('KrossNeueGrotesk-Italic.woff') format('woff'),
+        url('KrossNeueGrotesk-Italic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-Heavy.eot');
+    src: local('Kross Neue Grotesk Heavy'), local('KrossNeueGrotesk-Heavy'),
+        url('KrossNeueGrotesk-Heavy.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-Heavy.woff2') format('woff2'),
+        url('KrossNeueGrotesk-Heavy.woff') format('woff'),
+        url('KrossNeueGrotesk-Heavy.ttf') format('truetype');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-HeavyItalic.eot');
+    src: local('Kross Neue Grotesk Heavy Italic'), local('KrossNeueGrotesk-HeavyItalic'),
+        url('KrossNeueGrotesk-HeavyItalic.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-HeavyItalic.woff2') format('woff2'),
+        url('KrossNeueGrotesk-HeavyItalic.woff') format('woff'),
+        url('KrossNeueGrotesk-HeavyItalic.ttf') format('truetype');
+    font-weight: 900;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-LightItalic.eot');
+    src: local('Kross Neue Grotesk Light Italic'), local('KrossNeueGrotesk-LightItalic'),
+        url('KrossNeueGrotesk-LightItalic.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-LightItalic.woff2') format('woff2'),
+        url('KrossNeueGrotesk-LightItalic.woff') format('woff'),
+        url('KrossNeueGrotesk-LightItalic.ttf') format('truetype');
+    font-weight: 300;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-Light.eot');
+    src: local('Kross Neue Grotesk Light'), local('KrossNeueGrotesk-Light'),
+        url('KrossNeueGrotesk-Light.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-Light.woff2') format('woff2'),
+        url('KrossNeueGrotesk-Light.woff') format('woff'),
+        url('KrossNeueGrotesk-Light.ttf') format('truetype');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-Regular.eot');
+    src: local('Kross Neue Grotesk Regular'), local('KrossNeueGrotesk-Regular'),
+        url('KrossNeueGrotesk-Regular.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-Regular.woff2') format('woff2'),
+        url('KrossNeueGrotesk-Regular.woff') format('woff'),
+        url('KrossNeueGrotesk-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-Thin.eot');
+    src: local('Kross Neue Grotesk Thin'), local('KrossNeueGrotesk-Thin'),
+        url('KrossNeueGrotesk-Thin.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-Thin.woff2') format('woff2'),
+        url('KrossNeueGrotesk-Thin.woff') format('woff'),
+        url('KrossNeueGrotesk-Thin.ttf') format('truetype');
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-BoldItalic.eot');
+    src: local('Kross Neue Grotesk Bold Italic'), local('KrossNeueGrotesk-BoldItalic'),
+        url('KrossNeueGrotesk-BoldItalic.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-BoldItalic.woff2') format('woff2'),
+        url('KrossNeueGrotesk-BoldItalic.woff') format('woff'),
+        url('KrossNeueGrotesk-BoldItalic.ttf') format('truetype');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-Bold.eot');
+    src: local('Kross Neue Grotesk Bold'), local('KrossNeueGrotesk-Bold'),
+        url('KrossNeueGrotesk-Bold.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-Bold.woff2') format('woff2'),
+        url('KrossNeueGrotesk-Bold.woff') format('woff'),
+        url('KrossNeueGrotesk-Bold.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk';
+    src: url('KrossNeueGrotesk-ThinItalic.eot');
+    src: local('Kross Neue Grotesk Thin Italic'), local('KrossNeueGrotesk-ThinItalic'),
+        url('KrossNeueGrotesk-ThinItalic.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-ThinItalic.woff2') format('woff2'),
+        url('KrossNeueGrotesk-ThinItalic.woff') format('woff'),
+        url('KrossNeueGrotesk-ThinItalic.ttf') format('truetype');
+    font-weight: 100;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Kross Neue Grotesk Book';
+    src: url('KrossNeueGrotesk-Book.eot');
+    src: local('Kross Neue Grotesk Book'), local('KrossNeueGrotesk-Book'),
+        url('KrossNeueGrotesk-Book.eot?#iefix') format('embedded-opentype'),
+        url('KrossNeueGrotesk-Book.woff2') format('woff2'),
+        url('KrossNeueGrotesk-Book.woff') format('woff'),
+        url('KrossNeueGrotesk-Book.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
