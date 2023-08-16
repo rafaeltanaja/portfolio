@@ -1,0 +1,336 @@
+---
+title: "2540118656_FinalExam"
+author: "Rafael Tanaja"
+date: '2022-07-10'
+output: html_document
+---
+
+Link Video : https://binusianorg-my.sharepoint.com/personal/rafael_tanaja_binus_ac_id/_layouts/15/guestaccess.aspx?docid=0525d7ac6466e4f68b156374c10db3c1c&authkey=AYkedIKHapUYTbT1od2lUcU&e=iRxPmQ
+
+
+```{r}
+library(Hmisc)
+library(ROCR)
+library(rpart)
+library(rpart.plot)
+```
+
+```{r}
+strokedata <- read.csv("StrokeData.csv")
+head(strokedata)
+```
+
+```{r}
+str(strokedata)
+```
+
+```{r}
+strokedata$bmi <- suppressWarnings(as.numeric(strokedata$bmi))
+str(strokedata)
+```
+
+__Explanation__:
+1. Terdapat missing value sebanyak 201 di variable bmi
+2. Terdapat 12 variable di stroke data dengan data type int, char, dan numeric
+3. Merubah datatype bmi dari char ke numeric
+
+```{r}
+plot(as.factor(strokedata$gender), main = "Gender")
+```
+
+```{r}
+strokedata <- droplevels(subset(strokedata, gender != "Other"))
+
+levels(as.factor(strokedata$gender))
+```
+
+```{r}
+rcorr(cbind(as.factor(strokedata$gender), strokedata$age, strokedata$hypertension, strokedata$heart_disease, as.factor(strokedata$ever_married), as.factor(strokedata$work_type), as.factor(strokedata$Residence_type), strokedata$avg_glucose_level, strokedata$bmi, as.factor(strokedata$smoking_status), strokedata$stroke))
+```
+
+```{r}
+strokedata <- subset(strokedata, select = c(2, 3, 4, 5, 9, 10, 11, 12))
+head(strokedata, 10)
+```
+
+__Explanation__:
+1. Berdasarkan correlation dan beberapa pertimbangan, saya menghapus beberapa variable yang menurut saya tidak perlu digunakan.
+2. Variable yang saya hapus id, ever_married, work_type, Residence_type
+
+```{r}
+par(mfrow = c(1, 2))
+
+boxplot(strokedata$age, main = "Age")
+
+boxplot(strokedata$avg_glucose_level, main = "Average Glucose Level")
+```
+
+```{r}
+avg <- mean(strokedata$age)
+std <- sd(strokedata$age)
+
+bawah <- avg - 3 * std
+atas <- avg + 3 * std
+
+plot(strokedata$age, xlab = "Index", ylab = "Average Glucose Level", main = "Three-Sigma Edit Rule", las = 1, ylim = c(-50, 150))
+abline(h = bawah, col = "red")
+abline(h = atas, col = "red")
+```
+
+```{r}
+avg1 <- mean(strokedata$avg_glucose_level)
+std1 <- sd(strokedata$avg_glucose_level)
+
+bawah1 <- avg1 - 3 * std1
+atas1 <- avg1 + 3 * std1
+
+plot(strokedata$avg_glucose_level, xlab = "Index", ylab = "Average Glucose Level", main = "Three-Sigma Edit Rule", las = 1, ylim = c(-50, 400))
+abline(h = bawah1, col = "blue")
+abline(h = atas1, col = "blue")
+```
+
+__Explanation__:
+1. Menggunakan boxplot dan Three-Sigma Edit Rule untuk melihat outliers di variable age dan avg_glucose_level
+2. Ditemukan bahwa di variable avg_glucose_level memiliki outliers
+
+```{r}
+ThreeSigma <- function(x, t = 3){
+
+ mu <- mean(x, na.rm = TRUE)
+ sig <- sd(x, na.rm = TRUE)
+ if (sig == 0){
+ message("All non-missing x-values are identical")
+}
+ up <- mu + t * sig
+ down <- mu - t * sig
+ out <- list(up = up, down = down)
+ return(out)
+ }
+
+Hampel <- function(x, t = 3){
+
+ mu <- median(x, na.rm = TRUE)
+ sig <- mad(x, na.rm = TRUE)
+ if (sig == 0){
+ message("Hampel identifer implosion: MAD scale estimate is zero")
+ }
+ up <- mu + t * sig
+ down <- mu - t * sig
+ out <- list(up = up, down = down)
+ return(out)
+ }
+   
+BoxplotRule<- function(x, t = 1.5){
+
+ xL <- quantile(x, na.rm = TRUE, probs = 0.25, names = FALSE)
+ xU <- quantile(x, na.rm = TRUE, probs = 0.75, names = FALSE)
+ Q <- xU - xL
+ if (Q == 0){
+ message("Boxplot rule implosion: interquartile distance is zero")
+ }
+ up <- xU + t * Q
+ down <- xU - t * Q
+ out <- list(up = up, down = down)
+ return(out)
+}   
+
+ExtractDetails <- function(x, down, up){
+
+ outClass <- rep("N", length(x))
+ indexLo <- which(x < down)
+ indexHi <- which(x > up)
+ outClass[indexLo] <- "L"
+ outClass[indexHi] <- "U"
+ index <- union(indexLo, indexHi)
+ values <- x[index]
+ outClass <- outClass[index]
+ nOut <- length(index)
+ maxNom <- max(x[which(x <= up)])
+ minNom <- min(x[which(x >= down)])
+ outList <- list(nOut = nOut, lowLim = down,
+ upLim = up, minNom = minNom,
+ maxNom = maxNom, index = index,
+ values = values,
+ outClass = outClass)
+ return(outList)
+ }
+```
+
+```{r}
+FindOutliers <- function(x, t3 = 3, tH = 3, tb = 1.5){
+ threeLims <- ThreeSigma(x, t = t3)
+ HampLims <- Hampel(x, t = tH)
+ boxLims <- BoxplotRule(x, t = tb)
+
+ n <- length(x)
+ nMiss <- length(which(is.na(x)))
+
+ threeList <- ExtractDetails(x, threeLims$down, threeLims$up)
+ HampList <- ExtractDetails(x, HampLims$down, HampLims$up)
+ boxList <- ExtractDetails(x, boxLims$down, boxLims$up)
+
+ sumFrame <- data.frame(method = "ThreeSigma", n = n,
+ nMiss = nMiss, nOut = threeList$nOut,
+ lowLim = threeList$lowLim,
+ upLim = threeList$upLim,
+ minNom = threeList$minNom,
+ maxNom = threeList$maxNom)
+ upFrame <- data.frame(method = "Hampel", n = n,
+ nMiss = nMiss, nOut = HampList$nOut,
+ lowLim = HampList$lowLim,
+ upLim = HampList$upLim,
+ minNom = HampList$minNom,
+ maxNom = HampList$maxNom)
+ sumFrame <- rbind.data.frame(sumFrame, upFrame)
+ upFrame <- data.frame(method = "BoxplotRule", n = n,
+ nMiss = nMiss, nOut = boxList$nOut,
+ lowLim = boxList$lowLim,
+ upLim = boxList$upLim,
+ minNom = boxList$minNom,
+ maxNom = boxList$maxNom)
+ sumFrame <- rbind.data.frame(sumFrame, upFrame)
+
+ threeFrame <- data.frame(index = threeList$index,
+ values = threeList$values,
+ type = threeList$outClass)
+ HampFrame <- data.frame(index = HampList$index,
+ values = HampList$values,
+ type = HampList$outClass)
+ boxFrame <- data.frame(index = boxList$index,
+ values = boxList$values,
+ type = boxList$outClass)
+ outList <- list(summary = sumFrame, threeSigma = threeFrame,
+ Hampel = HampFrame, boxplotRule = boxFrame)
+ return(outList)
+}
+```
+
+```{r}
+outliers <- FindOutliers(strokedata$avg_glucose_level)
+outliers$summary
+```
+```{r}
+outliers1 <- FindOutliers(strokedata$age)
+outliers1$summary
+```
+
+__Explanation__:
+1. Kemudian menggunakan function FindOutliers untuk melihat jumlah dari outliers di variable avg_glucose_data dan age
+2. Terdapat 795 outliers dari 5110 baris data
+3. Outliers diabaikan karena hanya sedikit dan saya anggap tidak mengganggu
+
+```{r}
+sapply(strokedata, function(x) sum(is.na(x)))
+```
+
+```{r}
+strokedata$bmi[is.na(strokedata$bmi)] <- mean(strokedata$bmi, na.rm = T)
+sapply(strokedata, function(x) sum(is.na(x)))
+```
+
+__Explanation__:
+1. Saya meng-handle missing value dari variable bmi yang saya temukan dengan cara mengisi missing value dengan rata-rata dari bmi.
+
+```{r}
+set.seed(777)
+mixstroke <- strokedata[sample(1:nrow(strokedata)), ]
+
+head(mixstroke)
+```
+
+__Explanation__:
+1. Saya mix urutan data agar data lebih tercampur dan tidak urut.
+2. Kemudian saya cek apakah sudah tercampur
+
+```{r}
+trainset <- mixstroke[1:4140,]
+validationset <- mixstroke[4141:5110,]
+```
+
+
+```{r}
+sapply(validationset, function(x) sum(is.na(x)))
+
+sapply(trainset, function(x) sum(is.na(x)))
+
+validationset <- na.omit(validationset)
+```
+
+```{r}
+sapply(validationset, function(x) sum(is.na(x)))
+```
+
+
+__Explanation__:
+1. Dari data stroke terdapat 5110 baris data, kemudian saya bagi kurang lebih 81% validation set dan 19% training set
+
+```{r}
+logisticmodel <- glm(stroke ~ ., family = binomial(link = "logit"), data = trainset)
+
+summary(logisticmodel)
+```
+
+__Explanation__:
+1. Berdasarkan summary diatas, bisa terlihat bahwa stroke berhubungan erat dengan age dan avg_glucose_level
+
+#Logistic Regression
+
+```{r}
+logistic <- predict(logisticmodel, newdata = subset(validationset, select = c(1, 2, 3, 4, 5, 6, 7)), type = "response")
+pd <- prediction(logistic, validationset$stroke)
+curve <- performance(pd, measure = "tpr", x.measure = "fpr")
+
+plot(curve)
+```
+
+__Explanation__:
+1. Berdasarkan logistic regression, dapat dilihat belokan terakhir dari garis mendekati angka 1
+
+```{r}
+cekauc <- performance(pd, measure = "auc")
+cekauc <- cekauc@y.values[[1]]
+
+cekauc
+
+result <- ifelse(logistic > 0.5, 1, 0)
+error <- mean(result != validationset$stroke)
+hasil = 1 - error
+
+cat("Accuracy dari Logistic Regression : ", hasil)
+```
+
+__Explanation__:
+1. AUC yang didapat adalah 0.81 dan Accuracy sebesar 0.95, angka tersebut cukup tinggi sehingga dapat disimpulkan bahwa logistic regression yang dibuat memiliki performance dan akurasi yang baik dan tepat.
+
+#Decision Tree
+
+```{r}
+dtreemodel <- rpart(formula = stroke ~ age + avg_glucose_level + hypertension, 
+                    data = trainset, method = "class", 
+                    minsplit = 7, 
+                    minbucket = 7, 
+                    cp = 0.003)
+
+dtreemodel
+```
+
+#Contoh berumur 80, avg_glucose_level 100
+```{r}
+rpart.plot(dtreemodel)
+```
+__Explanation__:
+1. Menggunakan Decision Tree untuk stroke dengan 3 variable lainnya yaitu Age, Avg Glucose Level, dan Hypertension
+
+2. Saya menggunakan 3 variable tersebut karena memiliki hubungan erat dengan stroke sehingga Decision Tree yang dibuat memiliki visual yang bagus dan mudah dibaca
+
+3. Misalkan ada seseorang berumur 80, memiliki glucose level 100, dan memiliki riwayat hypertension. Maka dia akan memiliki kemungkinan untuk tidak stroke.
+
+```{r}
+predictionDT <- predict(dtreemodel, validationset, type = "class")
+cmatrix <- table(predictionDT, validationset$stroke)
+
+cat("Accuracy dari Decision Tree:", sum(diag(cmatrix))/sum(cmatrix))
+```
+
+__Explanation__:
+1. Akurasi dari Decision Tree yang telah dibuat adalah 0.94, Angka ini cukup tinggi dan dapat disimpulkan bahwa Decision Tree yang dibuat cukup akurat.
